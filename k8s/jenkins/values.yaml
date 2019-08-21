@@ -75,6 +75,17 @@ master:
                                     workingDir: ""
                                     command: ""
                                     args: ""
+                              - name: "ruby"
+                                label: "ruby"
+                                nodeUsageMode: EXCLUSIVE
+                                inheritFrom: "default"
+                                containers:
+                                  - name: jnlp
+                                    image: "meetveracity/jenkins-slave-ruby"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
                               - name: "helm"
                                 label: "helm"
                                 nodeUsageMode: EXCLUSIVE
@@ -124,21 +135,21 @@ master:
                                       mountPath: /var/lib/docker
                                       memory: false
 
-            globalLibrary: |
-                unclassified:
-                    globalLibraries:
-                        libraries:
-                          - name: "coding-challenge-library"
-                            defaultVersion: "master"
-                            implicit: true
-                            retriever:
-                                modernSCM:
-                                    scm:
-                                        github:
-                                            repoOwner: "meetveracity"
-                                            repository: "code-challenge-library"
-                                            credentialsId: "github"
-                                            traits:
-                                            - gitHubBranchDiscovery
-                                            - originPullRequestDiscoveryTrait
-                                            - gitHubForkDiscovery
+            # globalLibrary: |
+            #     unclassified:
+            #         globalLibraries:
+            #             libraries:
+            #               - name: "coding-challenge-library"
+            #                 defaultVersion: "master"
+            #                 implicit: true
+            #                 retriever:
+            #                     modernSCM:
+            #                         scm:
+            #                             github:
+            #                                 repoOwner: "meetveracity"
+            #                                 repository: "code-challenge-library"
+            #                                 credentialsId: "github"
+            #                                 traits:
+            #                                 - gitHubBranchDiscovery
+            #                                 - originPullRequestDiscoveryTrait
+            #                                 - gitHubForkDiscovery
