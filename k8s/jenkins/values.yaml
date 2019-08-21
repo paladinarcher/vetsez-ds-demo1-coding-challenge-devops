@@ -86,6 +86,22 @@ master:
                                     workingDir: ""
                                     command: ""
                                     args: ""
+                                  - name: postgres
+                                    image: "library/postgres"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
+                                    envVars:
+                                      - envVar:
+                                          key: "POSTGRES_PASSWORD"
+                                          value: "dsbpa"
+                                      - envVar:
+                                          key: "POSTGRES_USER"
+                                          value: "dsbpa"
+                                      - envVar:
+                                          key: "POSTGRES_DB"
+                                          value: "dsbpa_test"
                               - name: "helm"
                                 label: "helm"
                                 nodeUsageMode: EXCLUSIVE
