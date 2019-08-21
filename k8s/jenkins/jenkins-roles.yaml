@@ -1,0 +1,61 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: jenkins-helm
+rules:
+  - apiGroups: [""]
+    resources: ["pods/portforward"]
+    verbs: ["create"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["list", "get"]
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["list", "get"]
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: jenkins-helm
+  namespace: default
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: jenkins-helm
+subjects:
+- kind: ServiceAccount
+  name: jenkins-helm
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: jenkins-helm
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: jenkins-secrets
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "watch", "list"]
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: jenkins
+  namespace: default
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: jenkins-secrets
+subjects:
+- kind: ServiceAccount
+  name: jenkins
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: jenkins-secrets
+  apiGroup: rbac.authorization.k8s.io

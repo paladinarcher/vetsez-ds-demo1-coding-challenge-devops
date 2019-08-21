@@ -1,0 +1,2 @@
+#Do not commit secret objects for Jenkins credentials
+k8s/jenkins/credentials

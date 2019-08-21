@@ -1,0 +1,144 @@
+###############################################################################
+#
+# Configuration file for stable/jenkins Helm chart
+# See https://github.com/helm/charts/tree/master/stable/jenkins
+#
+# Install Jenkins with Helm by running:
+# `helm install -n jenkins stable/jenkins -f values.yaml --version 1.3.0`
+#
+# This has been tested against version 1.3.0 of the Jenkins Helm chart
+#
+###############################################################################
+serviceAccount:
+  create: false
+  name: jenkins
+master:
+    #image:
+    #imageTag: 
+    adminPassword: jenkins
+    serviceType: NodePort
+    installPlugins:
+      - configuration-as-code:1.21
+      - kubernetes:1.16.1
+      - workflow-job:2.32
+      - workflow-aggregator:2.6
+      - credentials-binding:1.19
+      - git:3.10.0
+      - github:1.29.4
+      - github-api:1.95
+      - github-branch-source:2.5.3
+      - slack:2.27
+      - blueocean:1.17.0
+      - pipeline-maven:3.8.0
+      - pipeline-utility-steps:2.3.0
+      - kubernetes-credentials-provider:0.12.1
+    overwritePlugins: true
+    javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
+    JCasC:
+        enabled: true
+        configScripts:
+            mavenSlave: |
+                jenkins:
+                    clouds:
+                      - kubernetes:
+                            name: kubernetes
+                            serverUrl: "https://kubernetes.default"
+                            namespace: "default"
+                            jenkinsUrl: "http://jenkins:8080"
+                            jenkinsTunnel: "jenkins-agent:50000"
+                            templates:
+                              - name: "default"
+                                label: "jenkins-jenkins-slave"
+                                nodeUsageMode: EXCLUSIVE
+                                containers:
+                                  - name: jnlp
+                                    image: "jenkins/jnlp-slave:3.27-1"
+                                    alwaysPullImage: false
+                                    command: ""
+                                    args: "^${computer.jnlpmac} ^${computer.name}"
+                                    workingDir: "/home/jenkins"
+                                    envVars:
+                                      - envVar:
+                                            key: "JENKINS_URL"
+                                            value: "http://jenkins.default.svc.cluster.local:8080"
+                              - name: "maven"
+                                label: "maven"
+                                nodeUsageMode: EXCLUSIVE
+                                inheritFrom: "default"
+                                containers:
+                                  - name: jnlp
+                                    image: "meetveracity/jenkins-slave-maven"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
+                              - name: "helm"
+                                label: "helm"
+                                nodeUsageMode: EXCLUSIVE
+                                inheritFrom: "default"
+                                containers:
+                                  - name: jnlp
+                                    image: "meetveracity/jenkins-slave-helm"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
+                                    envVars:
+                                      - envVar:
+                                          key: "TILLER_NAMESPACE"
+                                          value: "kube-system"
+                                serviceAccount: jenkins-helm
+                              - name: "docker"
+                                label: "docker"
+                                nodeUsageMode: EXCLUSIVE
+                                inheritFrom: "default"
+                                containers:
+                                  - name: jnlp
+                                    image: "meetveracity/jenkins-slave-docker"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
+                                    envVars:
+                                      - envVar:
+                                          key: "DOCKER_REGISTRY_URL"
+                                          value: "https://registry-docker-registry.default.svc.cluster.local"
+                                      - envVar:
+                                          key: "DOCKER_CREDENTIAL_ID"
+                                          value: "docker-registry"
+                                      - envVar:
+                                          key: "DOCKER_HOST"
+                                          value: "tcp://localhost:2375"
+                                  - name: dind
+                                    image: "docker:18.05-dind"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
+                                    privileged: true
+                                volumes:
+                                  - emptyDirVolume:
+                                      mountPath: /var/lib/docker
+                                      memory: false
+                                  - configMapVolume:
+                                      mountPath: /etc/docker/certs.d/registry-docker-registry.default.svc.cluster.local
+                                      configMapName: docker-registry-ca
+
+            globalLibrary: |
+                unclassified:
+                    globalLibraries:
+                        libraries:
+                          - name: "coding-challenge-library"
+                            defaultVersion: "master"
+                            implicit: true
+                            retriever:
+                                modernSCM:
+                                    scm:
+                                        github:
+                                            repoOwner: "meetveracity"
+                                            repository: "coding-challenge-library"
+                                            credentialsId: "github"
+                                            traits:
+                                            - gitHubBranchDiscovery
+                                            - originPullRequestDiscoveryTrait
+                                            - gitHubForkDiscovery
