@@ -63,7 +63,7 @@ master:
                                     envVars:
                                       - envVar:
                                             key: "JENKINS_URL"
-                                            value: "http://jenkins.default.svc.cluster.local:8080"
+                                            value: "http://jenkins.default.svc.cluster.local"
                               - name: "maven"
                                 label: "maven"
                                 nodeUsageMode: EXCLUSIVE
@@ -89,7 +89,7 @@ master:
                                     envVars:
                                       - envVar:
                                           key: "TILLER_NAMESPACE"
-                                          value: "kube-system"
+                                          value: "tiller"
                                 serviceAccount: jenkins-helm
                               - name: "docker"
                                 label: "docker"
@@ -105,7 +105,7 @@ master:
                                     envVars:
                                       - envVar:
                                           key: "DOCKER_REGISTRY_URL"
-                                          value: "https://registry-docker-registry.default.svc.cluster.local"
+                                          value: "https://index.docker.io"
                                       - envVar:
                                           key: "DOCKER_CREDENTIAL_ID"
                                           value: "docker-registry"
@@ -123,9 +123,6 @@ master:
                                   - emptyDirVolume:
                                       mountPath: /var/lib/docker
                                       memory: false
-                                  - configMapVolume:
-                                      mountPath: /etc/docker/certs.d/registry-docker-registry.default.svc.cluster.local
-                                      configMapName: docker-registry-ca
 
             globalLibrary: |
                 unclassified:
@@ -139,7 +136,7 @@ master:
                                     scm:
                                         github:
                                             repoOwner: "meetveracity"
-                                            repository: "coding-challenge-library"
+                                            repository: "code-challenge-library"
                                             credentialsId: "github"
                                             traits:
                                             - gitHubBranchDiscovery
