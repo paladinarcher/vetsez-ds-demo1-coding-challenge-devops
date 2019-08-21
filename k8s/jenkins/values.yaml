@@ -19,6 +19,7 @@ master:
     # Use NodePort for Minikube
     #serviceType: NodePort
     serviceType: LoadBalancer
+    servicePort: 80
     installPlugins:
       - configuration-as-code:1.21
       - kubernetes:1.16.1
@@ -46,7 +47,7 @@ master:
                             name: kubernetes
                             serverUrl: "https://kubernetes.default"
                             namespace: "default"
-                            jenkinsUrl: "http://jenkins:8080"
+                            jenkinsUrl: "http://jenkins"
                             jenkinsTunnel: "jenkins-agent:50000"
                             templates:
                               - name: "default"
