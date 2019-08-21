@@ -18,7 +18,7 @@ master:
     adminPassword: jenkins
     # Use NodePort for Minikube
     #serviceType: NodePort
-    serviceType: ClusterIP
+    serviceType: LoadBalancer
     installPlugins:
       - configuration-as-code:1.21
       - kubernetes:1.16.1
