@@ -16,7 +16,9 @@ master:
     #image:
     #imageTag: 
     adminPassword: jenkins
-    serviceType: NodePort
+    # Use NodePort for Minikube
+    #serviceType: NodePort
+    serviceType: ClusterIP
     installPlugins:
       - configuration-as-code:1.21
       - kubernetes:1.16.1
