@@ -1,0 +1,11 @@
+# Git repository to monitor
+git:
+  url: https://github.com/meetveracity/coding-challenge-devops
+  branch: master
+  path: deployment-config
+
+# Enable the Helm Operator
+helmOperator:
+  create: true
+  createCRD: true
+  allowNamespace: default
