@@ -1,0 +1,23 @@
+# Setup Service Account and Role for Tiller with access only to its own namespace
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: tiller
+  namespace: kube-system
+  labels:
+    app: helm
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tiller-role-binding
+  labels:
+    app: helm
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: tiller
+  namespace: kube-system
