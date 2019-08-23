@@ -7,5 +7,5 @@ git:
 # Enable the Helm Operator
 helmOperator:
   create: true
-  createCRD: true
+  createCRD: false
   allowNamespace: default
