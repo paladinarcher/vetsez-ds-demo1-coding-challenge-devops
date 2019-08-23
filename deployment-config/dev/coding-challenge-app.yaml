@@ -1,0 +1,27 @@
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease #Custom Object type for use with Flux Helm Operator
+metadata:
+  name: coding-challenge-app #Name of the object
+  namespace: development #Namespace in which to install the Chart
+  annotations:
+    flux.weave.works/automated: "true" #Set this to true to automate installation/updating of this release when the Chart of this object changes
+spec:
+  releaseName: coding-challenge-app-dev #Name of the Helm release
+
+  ########################################################################
+  # Values section defines the location of the chart
+  # This example pulls the chart from a Git repository
+  ########################################################################
+  chart:
+    git: https://github.com/meetveracity/coding-challenge-devops #Repository where the pull the chart from
+    ref: master #Branch or tag to retreive the chart from
+    path: k8s/coding-challenge-app #Path to the chart directory in the repository
+
+  ########################################################################
+  # Values section defines the parameters to the chart
+  # These are specific to the chart being installed
+  ########################################################################
+  values:
+    image:
+      tag: development
+      pullPolicy: Always
