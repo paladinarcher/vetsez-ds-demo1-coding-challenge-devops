@@ -35,6 +35,7 @@ master:
       - pipeline-maven:3.8.0
       - pipeline-utility-steps:2.3.0
       - kubernetes-credentials-provider:0.12.1
+      - github-oauth:0.33
     overwritePlugins: true
     javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
     JCasC:
