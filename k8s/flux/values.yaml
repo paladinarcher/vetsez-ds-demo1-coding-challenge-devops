@@ -8,4 +8,4 @@ git:
 helmOperator:
   create: true
   createCRD: false
-  allowNamespace: default
+  #allowNamespace: default
