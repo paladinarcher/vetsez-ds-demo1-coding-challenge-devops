@@ -30,13 +30,18 @@ spec:
               protocol: TCP
           env:
             - name: RAILS_ENV
-              value: test
+              value: {{ .Values.railsEnv | quote }}
+            {{- if .Values.postgresql.postgresUser }}
             - name: DSBPA_TEST_USER
               value: {{ .Values.postgresql.postgresUser | quote }}
+            {{- end }}
             - name: DSBPA_TEST_PASSWORD
-              value: {{ .Values.postgresql.postgresPassword | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{- if .Values.postgresql.postgresPasswordSecret }} {{ .Values.postgresql.postgresPasswordSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
+                  key: postgres-password
             - name: DATABASE_HOST
-              value: {{ .Release.Name }}-postgresql
+              value: {{ template "postgresql.fullname" .}}
             - name: DATABASE_PORT
               value: "5432"
           livenessProbe:
@@ -55,13 +60,18 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: RAILS_ENV
-              value: test
+              value: {{ .Values.railsEnv | quote }}
+            {{- if .Values.postgresql.postgresUser }}
             - name: DSBPA_TEST_USER
               value: {{ .Values.postgresql.postgresUser | quote }}
+            {{- end }}
             - name: DSBPA_TEST_PASSWORD
-              value: {{ .Values.postgresql.postgresPassword | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{- if .Values.postgresql.postgresPasswordSecret }} {{ .Values.postgresql.postgresPasswordSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
+                  key: postgres-password
             - name: DATABASE_HOST
-              value: {{ .Release.Name }}-postgresql
+              value: {{ template "postgresql.fullname" .}}
             - name: DATABASE_PORT
               value: "5432"
       {{- with .Values.nodeSelector }}

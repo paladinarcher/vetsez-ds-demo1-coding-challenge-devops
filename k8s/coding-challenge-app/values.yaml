@@ -40,5 +40,8 @@ tolerations: []
 
 affinity: {}
 
+railsEnv: test
+
 postgresql:
+  postgresUser: dsbpa
   postgresDatabase: dsbpa_test
