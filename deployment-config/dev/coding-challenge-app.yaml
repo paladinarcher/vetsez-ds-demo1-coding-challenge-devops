@@ -25,3 +25,9 @@ spec:
     image:
       tag: development
       pullPolicy: Always
+    initImage:
+      tag: development
+      pullPolicy: Always
+    postgresql:
+      postgresqlUsername: dsbpa
+      postgresqlPassword: dsbpa

@@ -9,6 +9,11 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
+initImage:
+  repository: meetveracity/coding-challenge-db-init
+  tag: latest
+  pullPolicy: IfNotPresent
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -36,4 +41,4 @@ tolerations: []
 affinity: {}
 
 postgresql:
-  postgresqlDatabase: dsbpa_test
+  postgresDatabase: dsbpa_test

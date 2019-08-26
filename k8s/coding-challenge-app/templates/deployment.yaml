@@ -28,6 +28,17 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          env:
+            - name: RAILS_ENV
+              value: test
+            - name: DSBPA_TEST_USER
+              value: {{ .Values.postgresql.postgresUser | quote }}
+            - name: DSBPA_TEST_PASSWORD
+              value: {{ .Values.postgresql.postgresPassword | quote }}
+            - name: DATABASE_HOST
+              value: {{ .Release.Name }}-postgresql
+            - name: DATABASE_PORT
+              value: "5432"
           livenessProbe:
             httpGet:
               path: /dsbpa
@@ -38,6 +49,21 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      initContainers:
+        - name: {{ .Chart.Name }}-init
+          image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: RAILS_ENV
+              value: test
+            - name: DSBPA_TEST_USER
+              value: {{ .Values.postgresql.postgresUser | quote }}
+            - name: DSBPA_TEST_PASSWORD
+              value: {{ .Values.postgresql.postgresPassword | quote }}
+            - name: DATABASE_HOST
+              value: {{ .Release.Name }}-postgresql
+            - name: DATABASE_PORT
+              value: "5432"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
