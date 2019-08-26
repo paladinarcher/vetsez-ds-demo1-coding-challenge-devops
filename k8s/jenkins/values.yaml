@@ -102,7 +102,7 @@ master:
                                           value: "dsbpa"
                                       - envVar:
                                           key: "POSTGRES_DB"
-                                          value: "dsbpa_test"
+                                          value: "ci"
                               - name: "helm"
                                 label: "helm"
                                 nodeUsageMode: EXCLUSIVE
