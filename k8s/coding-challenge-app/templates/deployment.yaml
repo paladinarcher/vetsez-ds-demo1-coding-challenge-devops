@@ -32,10 +32,10 @@ spec:
             - name: RAILS_ENV
               value: {{ .Values.railsEnv | quote }}
             {{- if .Values.postgresql.postgresUser }}
-            - name: DSBPA_TEST_USER
+            - name: DATABASE_USER
               value: {{ .Values.postgresql.postgresUser | quote }}
             {{- end }}
-            - name: DSBPA_TEST_PASSWORD
+            - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{- if .Values.postgresql.postgresPasswordSecret }} {{ .Values.postgresql.postgresPasswordSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
@@ -62,10 +62,10 @@ spec:
             - name: RAILS_ENV
               value: {{ .Values.railsEnv | quote }}
             {{- if .Values.postgresql.postgresUser }}
-            - name: DSBPA_TEST_USER
+            - name: DATABASE_USER
               value: {{ .Values.postgresql.postgresUser | quote }}
             {{- end }}
-            - name: DSBPA_TEST_PASSWORD
+            - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{- if .Values.postgresql.postgresPasswordSecret }} {{ .Values.postgresql.postgresPasswordSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
