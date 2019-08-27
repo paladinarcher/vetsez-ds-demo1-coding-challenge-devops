@@ -20,6 +20,12 @@ master:
     #serviceType: NodePort
     serviceType: LoadBalancer
     servicePort: 80
+    containerEnv:
+      - name: GITHUB_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: jenkins-github-oauth
+            key: clientSecret
     installPlugins:
       - configuration-as-code:1.21
       - kubernetes:1.16.1
@@ -138,7 +144,7 @@ master:
                                     envVars:
                                       - envVar:
                                           key: "DOCKER_REGISTRY_URL"
-                                          value: "https://index.docker.io"
+                                          value: ""
                                       - envVar:
                                           key: "DOCKER_CREDENTIAL_ID"
                                           value: "docker-registry"
