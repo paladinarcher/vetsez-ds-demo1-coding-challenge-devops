@@ -87,6 +87,11 @@ master:
                                     workingDir: ""
                                     command: ""
                                     args: ""
+                                    envVars:
+                                      - secretEnvVar:
+                                          key: "RAILS_MASTER_KEY"
+                                          secretName: "coding-challenge-app"
+                                          secretKey: "secret_key_base"
                                   - name: postgres
                                     image: "library/postgres"
                                     alwaysPullImage: true
@@ -161,3 +166,8 @@ master:
                       clientID: "874501bec5adce104703"
                       clientSecret: "${GITHUB_SECRET}"
                       oauthScopes: "read:org,user:email"
+            git: |
+                unclassified:
+                  gitscm:
+                    globalConfigName: jasonluck
+                    globalConfigEmail: jluck@meetveracity.com
