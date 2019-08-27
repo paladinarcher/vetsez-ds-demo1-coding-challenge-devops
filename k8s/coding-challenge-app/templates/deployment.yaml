@@ -44,6 +44,13 @@ spec:
               value: {{ template "postgresql.fullname" .}}
             - name: DATABASE_PORT
               value: "5432"
+            {{- if .Values.railsMasterKeySecret }}
+            - name: RAILS_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.railsMasterKeySecret }}
+                  key: secret_key_base
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /dsbpa
