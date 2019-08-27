@@ -26,6 +26,11 @@ master:
           secretKeyRef:
             name: jenkins-github-oauth
             key: clientSecret
+      - name: GITHUB_CLIENT_ID
+        valueFrom:
+          secretKeyRef:
+            name: jenkins-github-oauth
+            key: clientId
     installPlugins:
       - configuration-as-code:1.21
       - kubernetes:1.16.1
@@ -169,7 +174,7 @@ master:
                     github:
                       githubWebUri: "https://github.com"
                       githubApiUri: "https://api.github.com"
-                      clientID: "874501bec5adce104703"
+                      clientID: "${GITHUB_CLIENT_ID}"
                       clientSecret: "${GITHUB_SECRET}"
                       oauthScopes: "read:org,user:email"
                   authorizationStrategy:
