@@ -152,21 +152,12 @@ master:
                                       mountPath: /var/lib/docker
                                       memory: false
 
-            # globalLibrary: |
-            #     unclassified:
-            #         globalLibraries:
-            #             libraries:
-            #               - name: "coding-challenge-library"
-            #                 defaultVersion: "master"
-            #                 implicit: true
-            #                 retriever:
-            #                     modernSCM:
-            #                         scm:
-            #                             github:
-            #                                 repoOwner: "meetveracity"
-            #                                 repository: "code-challenge-library"
-            #                                 credentialsId: "github"
-            #                                 traits:
-            #                                 - gitHubBranchDiscovery
-            #                                 - originPullRequestDiscoveryTrait
-            #                                 - gitHubForkDiscovery
+            authentication: |
+                jenkins:
+                  securityRealm:
+                    github:
+                      githubWebUri: "https://github.com"
+                      githubApiUri: "https://api.github.com"
+                      clientID: "874501bec5adce104703"
+                      clientSecret: "${GITHUB_SECRET}"
+                      oauthScopes: "read:org,user:email"
