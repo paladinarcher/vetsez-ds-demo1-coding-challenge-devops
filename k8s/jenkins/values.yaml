@@ -166,6 +166,13 @@ master:
                       clientID: "874501bec5adce104703"
                       clientSecret: "${GITHUB_SECRET}"
                       oauthScopes: "read:org,user:email"
+                  authorizationStrategy:
+                    github:
+                      adminUserNames: jasonluck
+                      organizationNames: meetveracity
+                      useRepositoryPermissions: true
+
+
             git: |
                 unclassified:
                   gitscm:
