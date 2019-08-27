@@ -152,12 +152,12 @@ master:
                                       mountPath: /var/lib/docker
                                       memory: false
 
-            authentication: |
-                jenkins:
-                  securityRealm:
-                    github:
-                      githubWebUri: "https://github.com"
-                      githubApiUri: "https://api.github.com"
-                      clientID: "874501bec5adce104703"
-                      clientSecret: "${GITHUB_SECRET}"
-                      oauthScopes: "read:org,user:email"
+            # authentication: |
+            #     jenkins:
+            #       securityRealm:
+            #         github:
+            #           githubWebUri: "https://github.com"
+            #           githubApiUri: "https://api.github.com"
+            #           clientID: "874501bec5adce104703"
+            #           clientSecret: "${GITHUB_SECRET}"
+            #           oauthScopes: "read:org,user:email"
