@@ -9,3 +9,5 @@ plugins:
         - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.1.1/sonarqube-community-branch-plugin-1.1.1.jar"
 persistence:
     enabled: true
+    accessMode: ReadWriteOnce
+    size: 10Gi
