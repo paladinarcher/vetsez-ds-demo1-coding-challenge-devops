@@ -44,5 +44,5 @@ railsEnv: test
 railsMasterKeySecret: null
 
 postgresql:
-  postgresUser: dsbpa
-  postgresDatabase: dsbpa_test
+  postgresqlUsername: dsbpa
+  postgresqlDatabase: dsbpa_test

@@ -32,4 +32,4 @@ spec:
       tag: latest
       pullPolicy: Always
     postgresql:
-      existingSecret: coding-challenge-app-dev-postgresql
+      postgresqlPassword: dsbpa

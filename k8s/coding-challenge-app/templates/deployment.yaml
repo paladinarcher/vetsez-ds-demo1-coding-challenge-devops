@@ -31,15 +31,15 @@ spec:
           env:
             - name: RAILS_ENV
               value: {{ .Values.railsEnv | quote }}
-            {{- if .Values.postgresql.postgresUser }}
+            {{- if .Values.postgresql.postgresqlUsername }}
             - name: DATABASE_USER
-              value: {{ .Values.postgresql.postgresUser | quote }}
+              value: {{ .Values.postgresql.postgresqlUsername | quote }}
             {{- end }}
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{- if .Values.postgresql.postgresPasswordSecret }} {{ .Values.postgresql.postgresPasswordSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
-                  key: postgres-password
+                  name: {{- if .Values.postgresql.existingSecret }} {{ .Values.postgresql.existingSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
+                  key: postgresql-password
             - name: DATABASE_HOST
               value: {{ template "postgresql.fullname" .}}
             - name: DATABASE_PORT
@@ -64,19 +64,19 @@ spec:
       initContainers:
         - name: {{ .Chart.Name }}-init
           image: "{{ .Values.initImage.repository }}:{{ .Values.initImage.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.initImage.pullPolicy }}
           env:
             - name: RAILS_ENV
               value: {{ .Values.railsEnv | quote }}
-            {{- if .Values.postgresql.postgresUser }}
+            {{- if .Values.postgresql.postgresqlUsername }}
             - name: DATABASE_USER
-              value: {{ .Values.postgresql.postgresUser | quote }}
+              value: {{ .Values.postgresql.postgresqlUsername | quote }}
             {{- end }}
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{- if .Values.postgresql.postgresPasswordSecret }} {{ .Values.postgresql.postgresPasswordSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
-                  key: postgres-password
+                  name: {{- if .Values.postgresql.existingSecret }} {{ .Values.postgresql.existingSecret }} {{- else }} {{ template "postgresql.fullname" .}} {{- end }}
+                  key: postgresql-password
             - name: DATABASE_HOST
               value: {{ template "postgresql.fullname" .}}
             - name: DATABASE_PORT
