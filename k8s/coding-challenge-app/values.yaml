@@ -45,4 +45,5 @@ railsMasterKeySecret: null
 
 postgresql:
   postgresqlUsername: dsbpa
+  postgresqlPassword: dsbpa
   postgresqlDatabase: dsbpa_test
