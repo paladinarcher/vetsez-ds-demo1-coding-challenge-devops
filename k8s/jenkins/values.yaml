@@ -99,8 +99,6 @@ master:
                                     workingDir: ""
                                     command: ""
                                     args: ""
-                                    privileged: true
-                                    resourceRequestMemory: "1024Mi"
                                     envVars:
                                       - secretEnvVar:
                                           key: "RAILS_MASTER_KEY"
@@ -122,6 +120,28 @@ master:
                                       - envVar:
                                           key: "POSTGRES_DB"
                                           value: "ci"
+                              - name: "selenium"
+                                label: "selenium"
+                                nodeUsageMode: EXCLUSIVE
+                                inheritFrom: "default"
+                                containers:
+                                  - name: jnlp
+                                    image: "meetveracity/jenkins-slave-ruby"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
+                                    envVars:
+                                      - secretEnvVar:
+                                          key: "RAILS_MASTER_KEY"
+                                          secretName: "coding-challenge-app"
+                                          secretKey: "secret_key_base"
+                                  - name: selenium
+                                    image: "selenium/standalone-chrome"
+                                    alwaysPullImage: true
+                                    workingDir: ""
+                                    command: ""
+                                    args: ""
                               - name: "helm"
                                 label: "helm"
                                 nodeUsageMode: EXCLUSIVE
