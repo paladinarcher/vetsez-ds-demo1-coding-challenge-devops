@@ -5,7 +5,10 @@ metadata:
   namespace: development #Namespace in which to install the Chart
   annotations:
     flux.weave.works/automated: "true" #Set this to true to automate installation/updating of this release when the Chart of this object changes
-    fluxcd.io/tag.chart-image: glob:development
+    fluxcd.io/tag.chart-image: glob:development-*
+    repository.fluxcd.io/initImage: initImage.repository
+    tag.fluxcd.io/initImage: initImage.tag
+    filter.fluxcd.io/initImage: glob:development-*
 spec:
   releaseName: coding-challenge-app-dev #Name of the Helm release
 
