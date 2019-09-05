@@ -1,3 +1,4 @@
+---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease #Custom Object type for use with Flux Helm Operator
 metadata:
@@ -27,12 +28,12 @@ spec:
   ########################################################################
   values:
     image:
-      repository: meetveracity/coding-challenge-app 
+      repository: meetveracity/coding-challenge-app
       tag: development
       pullPolicy: Always
     initImage:
       repository: meetveracity/coding-challenge-db-init
-      tag: development
+      tag: development-ca66f1ca89f35a638669f8b02a1efb19251e0091
       pullPolicy: Always
     postgresql:
       postgresqlPassword: dsbpa
