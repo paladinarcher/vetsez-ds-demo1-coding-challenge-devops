@@ -33,7 +33,7 @@ spec:
       pullPolicy: Always
     initImage:
       repository: meetveracity/coding-challenge-db-init
-      tag: development-89c21bbe98dbfc80f74f36842fae91f65f39b537
+      tag: development-acafdc4855389d381c168605ab3504c8238a18c5
       pullPolicy: Always
     postgresql:
       postgresqlPassword: dsbpa
