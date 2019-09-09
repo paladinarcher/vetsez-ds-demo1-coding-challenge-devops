@@ -29,11 +29,11 @@ spec:
   values:
     image:
       repository: meetveracity/coding-challenge-app
-      tag: development-ca66f1ca89f35a638669f8b02a1efb19251e0091
+      tag: development-89c21bbe98dbfc80f74f36842fae91f65f39b537
       pullPolicy: Always
     initImage:
       repository: meetveracity/coding-challenge-db-init
-      tag: development-ca66f1ca89f35a638669f8b02a1efb19251e0091
+      tag: development-89c21bbe98dbfc80f74f36842fae91f65f39b537
       pullPolicy: Always
     postgresql:
       postgresqlPassword: dsbpa
