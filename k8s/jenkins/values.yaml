@@ -47,6 +47,8 @@ master:
       - pipeline-utility-steps:2.3.0
       - kubernetes-credentials-provider:0.12.1
       - github-oauth:0.33
+      - multibranch-job-tear-down:1.2
+      - pipeline-github:2.5
     overwritePlugins: true
     javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
     JCasC:
