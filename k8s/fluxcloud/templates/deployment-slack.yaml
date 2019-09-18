@@ -1,0 +1,63 @@
+{{- if .Values.slack.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "flux-chart.fullname" . }}-slack
+  labels:
+{{ include "flux-chart.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "flux-chart.name" . }}-slack
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "flux-chart.name" . }}-slack
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3032
+              protocol: TCP
+          env:
+            - name: LISTEN_ADDRESS
+              value: ":3032"
+            - name: EXPORTER_TYPE
+              value: "slack"
+            - name: SLACK_URL
+              value: {{ required "A valid .Values.slack.url value is required." .Values.slack.url | quote }}
+            - name: SLACK_CHANNEL
+              value: {{ required "A valid .Values.slack.channel value is required." .Values.slack.channel | quote }}
+            - name: SLACK_USERNAME
+              value: {{ .Values.slack.username | quote }}
+            - name: SLACK_ICON_EMOJI
+              value: {{ .Values.slack.iconEmoji | quote }}
+            {{- if .Values.gitHubUrl }}
+            - name: GITHUB_URL
+              value: {{ required "A valid .Values.gitHubUrl value is required." .Values.gitHubUrl | quote }}
+            {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+{{- end }}
