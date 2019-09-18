@@ -48,7 +48,7 @@ slack:
   # Enable to send Notifications to Slack about Flux deployments
   enabled: true
   # Slack Channel to send notification to.
-  # channel: "#ci"
+  channel: "#development"
   # Slack Application URL. Ex: "https://hooks.slack.com/services/..."
   url: null
   # Username displayed in Slack for the fluxcloud app
