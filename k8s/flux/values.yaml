@@ -9,3 +9,6 @@ helmOperator:
   create: true
   createCRD: false
   #allowNamespace: default
+
+additionalArgs:
+  - --connect=ws://fluxcloud-slack
