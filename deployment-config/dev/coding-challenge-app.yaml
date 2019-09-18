@@ -10,6 +10,8 @@ metadata:
     repository.fluxcd.io/initImage: initImage.repository
     tag.fluxcd.io/initImage: initImage.tag
     filter.fluxcd.io/initImage: glob:development-*
+  labels:
+    environment: development
 spec:
   releaseName: coding-challenge-app-dev #Name of the Helm release
 
