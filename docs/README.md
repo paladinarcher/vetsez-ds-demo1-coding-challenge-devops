@@ -39,6 +39,7 @@ Build the application Docker container images and push them to our image reposit
     Deploy the application to an ephemeral test environment for execution of performance test cases. Tears down the instance when tests are complete. _Not yet implemented._
 1. **Deploy Review Instance**</br>
 If this build is for a PR, then the pipeline will deploy an instance of application using the PR build. This can be used during review of the PR and any acceptance testing of the feature before the PR is merged. This instance will be torned down by Jenkins when the PR is closed.
+1. If this is the `master` branch, the pipeline will tag the container images with `dev-{COMMIT_ID}`, thereby triggering Flux to promote the container to the Dev environment. See [Deployments and Promotion](../deployment-config) for more information on this topic.
 
 If any failures occur or quality gates are not passed, the build will be failed and a Slack notification will be sent out.
 
