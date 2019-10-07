@@ -34,7 +34,7 @@ Execute Unit tests
 Build the application Docker container images and push them to our image repository.
 1. In Parallel:
     * **Deploy application and execute Functional Tests**
-    Deploy the application to an ephemeral test environment for execution of functional test cases. For additional details on how deployments are done see [Deployment Stage Details](../common/deployment.md). Execute functional test cases by running `mvn integration-test`. Tears down the instance when tests are complete.
+    Deploy the application to an ephemeral test environment for execution of functional test cases. Execute functional test cases by running `mvn integration-test`. Tears down the instance when tests are complete.
     * **Deploy application and execute Performance Tests**
     Deploy the application to an ephemeral test environment for execution of performance test cases. Tears down the instance when tests are complete. _Not yet implemented._
 1. **Deploy Review Instance**</br>
