@@ -14,7 +14,7 @@ The pipeline is triggered under the following scenarios:
 * Next Development Version Number - Required for Release.
 
 
-![Pipeline Image](img/java-gitflow-pipeline.png "Gitflow Pipeline")
+![Pipeline Image](img/gitflow-pipeline.png "Gitflow Pipeline")
 
 ## Pipeline Steps
 When a commit is made to the `mastere` branch or a  PR is opened against the `master` branch, the pipeline is triggered.
