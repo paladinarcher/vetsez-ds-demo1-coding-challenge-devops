@@ -49,7 +49,6 @@ master:
       - github-oauth:0.33
       - multibranch-job-tear-down:1.2
       - pipeline-github:2.5
-      - sonar:2.9
     overwritePlugins: true
     javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
     JCasC:
