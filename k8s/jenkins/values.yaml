@@ -37,7 +37,7 @@ master:
       - workflow-job:2.32
       - workflow-aggregator:2.6
       - credentials-binding:1.19
-      - git:3.10.0
+      - git:3.12.1
       - github:1.29.4
       - github-api:1.95
       - github-branch-source:2.5.3
