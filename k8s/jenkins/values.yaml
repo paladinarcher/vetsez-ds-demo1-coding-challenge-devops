@@ -32,7 +32,7 @@ master:
             name: jenkins-github-oauth
             key: clientId
     installPlugins:
-      - configuration-as-code:1.21
+      - configuration-as-code:1.30
       - kubernetes:1.16.1
       - workflow-job:2.32
       - workflow-aggregator:2.6
