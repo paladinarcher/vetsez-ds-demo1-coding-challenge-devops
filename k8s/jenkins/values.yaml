@@ -32,24 +32,24 @@ master:
             name: jenkins-github-oauth
             key: clientId
     installPlugins:
-      - configuration-as-code:1.30
-      - kubernetes:1.16.1
+      - configuration-as-code:1.33
+      - kubernetes:1.21.3
       - workflow-job:2.32
       - workflow-aggregator:2.6
-      - credentials-binding:1.19
-      - git:3.12.1
-      - github:1.29.4
+      - credentials-binding:1.20
+      - git:4.0.0
+      - github:1.29.5
       - github-api:1.95
-      - github-branch-source:2.5.3
-      - slack:2.27
+      - github-branch-source:2.5.8
+      - slack:2.34
       - blueocean:1.17.0
-      - pipeline-maven:3.8.0
-      - pipeline-utility-steps:2.3.0
-      - kubernetes-credentials-provider:0.12.1
+      - pipeline-maven:3.8.2
+      - pipeline-utility-steps:2.3.1
+      - kubernetes-credentials-provider:0.13
       - github-oauth:0.33
       - multibranch-job-tear-down:1.2
       - pipeline-github:2.5
-      - sonar:2.9
+      - sonar:2.10
     overwritePlugins: true
     javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
     JCasC:
@@ -215,3 +215,10 @@ master:
                   gitscm:
                     globalConfigName: jasonluck
                     globalConfigEmail: jluck@meetveracity.com
+            sonar: |
+                unclassified:
+                  sonarglobalconfiguration:     
+                    buildWrapperEnabled: true
+                    installations:              
+                      - name: sonarqube         
+                        serverUrl: http://a2a9db62ae96811e99eaa0ade22a5e0d-378747301.us-east-1.elb.amazonaws.com:9000/
