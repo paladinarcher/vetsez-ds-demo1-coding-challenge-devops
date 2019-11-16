@@ -42,7 +42,7 @@ master:
       - github-api:1.95
       - github-branch-source:2.5.8
       - slack:2.34
-      - blueocean:1.17.0
+      - blueocean:1.21.0
       - pipeline-maven:3.8.2
       - pipeline-utility-steps:2.3.1
       - kubernetes-credentials-provider:0.13
