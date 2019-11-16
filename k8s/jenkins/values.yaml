@@ -215,10 +215,3 @@ master:
                   gitscm:
                     globalConfigName: jasonluck
                     globalConfigEmail: jluck@meetveracity.com
-            sonar: |
-                unclassified:
-                  sonarglobalconfiguration:     
-                    buildWrapperEnabled: true
-                    installations:              
-                      - name: sonarqube         
-                        serverUrl: http://a2a9db62ae96811e99eaa0ade22a5e0d-378747301.us-east-1.elb.amazonaws.com:9000/
