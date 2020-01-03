@@ -3,12 +3,19 @@ service:
 
 sonarProperties:
     sonar.forceAuthentication: true
+    sonar.auth.github.enabled: false
+    sonar.auth.github.organizations: "meetveracity"
 
 plugins:
     install:
         - "https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.1.1/sonarqube-community-branch-plugin-1.1.1.jar"
         - "https://binaries.sonarsource.com/Distribution/sonar-ruby-plugin/sonar-ruby-plugin-1.5.0.315.jar"
+        - "https://binaries.sonarsource.com/Distribution/sonar-auth-github-plugin/sonar-auth-github-plugin-1.5.0.870.jar"
+
 persistence:
     enabled: true
     accessMode: ReadWriteOnce
     size: 10Gi
+
+service:
+    externalPort: 80
