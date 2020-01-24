@@ -33,23 +33,23 @@ master:
             key: clientId
     installPlugins:
       - configuration-as-code:1.35
-      - kubernetes:1.21.3
+      - kubernetes:1.23.1
       - workflow-job:2.36
       - workflow-aggregator:2.6
       - credentials-binding:1.20
-      - git:4.0.0
+      - git:4.1.1
       - github:1.29.5
       - github-api:1.95
       - github-branch-source:2.5.8
-      - slack:2.34
+      - slack:2.35
       - blueocean:1.21.0
       - pipeline-maven:3.8.2
-      - pipeline-utility-steps:2.3.1
+      - pipeline-utility-steps:2.4.0
       - kubernetes-credentials-provider:0.13
       - github-oauth:0.33
       - multibranch-job-tear-down:1.2
       - pipeline-github:2.5
-      - sonar:2.10
+      - sonar:2.11
     overwritePlugins: true
     javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
     JCasC:
