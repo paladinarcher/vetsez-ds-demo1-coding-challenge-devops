@@ -32,7 +32,7 @@ master:
             name: jenkins-github-oauth
             key: clientId
     installPlugins:
-      - configuration-as-code:1.33
+      - configuration-as-code:1.35
       - kubernetes:1.21.3
       - workflow-job:2.36
       - workflow-aggregator:2.6
@@ -205,8 +205,8 @@ master:
                       oauthScopes: "read:org,user:email"
                   authorizationStrategy:
                     github:
-                      adminUserNames: jasonluck
-                      organizationNames: meetveracity
+                      adminUserNames: "kginstructor,cshupp1,moroni-pickering,kwaiette"
+                      organizationNames: "paladinarcher"
                       useRepositoryPermissions: true
 
 
