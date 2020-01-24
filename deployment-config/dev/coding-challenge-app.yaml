@@ -20,7 +20,7 @@ spec:
   # This example pulls the chart from a Git repository
   ########################################################################
   chart:
-    git: https://github.com/meetveracity/coding-challenge-devops #Repository where the pull the chart from
+    git: https://github.com/paladinarcher/vetsez-ds-demo1-coding-challenge-devops #Repository where the pull the chart from
     ref: master #Branch or tag to retreive the chart from
     path: k8s/coding-challenge-app #Path to the chart directory in the repository
 

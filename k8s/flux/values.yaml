@@ -1,6 +1,6 @@
 # Git repository to monitor
 git:
-  url: git@github.com:meetveracity/coding-challenge-devops
+  url: git@github.com:paladinarcher/vetsez-ds-demo1-coding-challenge-devops
   branch: master
   path: deployment-config
 

@@ -42,7 +42,7 @@ affinity: {}
 
 # GitHub URL that is monitored by Flux. Used to create links.
 # This value is required.
-gitHubUrl: https://github.com/meetveracity/coding-challenge-devops
+gitHubUrl: https://github.com/paladinarcher/vetsez-ds-demo1-coding-challenge-devops
 
 slack:
   # Enable to send Notifications to Slack about Flux deployments
