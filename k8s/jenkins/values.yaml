@@ -50,6 +50,7 @@ master:
       - multibranch-job-tear-down:1.2
       - pipeline-github:2.5
       - sonar:2.11
+      - ws-cleanup:0.37
     overwritePlugins: true
     javaOpts: "-Dhudson.model.DirectoryBrowserSupport.CSP= "
     JCasC:
