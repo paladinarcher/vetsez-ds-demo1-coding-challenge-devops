@@ -176,7 +176,7 @@ master:
                                     envVars:
                                       - envVar:
                                           key: "DOCKER_REGISTRY_URL"
-                                          value: ""
+                                          value: "https://docker.vetsez.net/v2"
                                       - envVar:
                                           key: "DOCKER_CREDENTIAL_ID"
                                           value: "docker-registry"
