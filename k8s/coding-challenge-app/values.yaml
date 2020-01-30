@@ -5,12 +5,12 @@
 replicaCount: 1
 
 image:
-  repository: meetveracity/coding-challenge-app
+  repository: docker.vetsez.net/coding-challenge-app
   tag: latest
   pullPolicy: IfNotPresent
 
 initImage:
-  repository: meetveracity/coding-challenge-db-init
+  repository: docker.vetsez.net/coding-challenge-db-init
   tag: latest
   pullPolicy: IfNotPresent
 

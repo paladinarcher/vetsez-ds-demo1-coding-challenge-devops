@@ -30,11 +30,11 @@ spec:
   ########################################################################
   values:
     image:
-      repository: meetveracity/coding-challenge-app
+      repository: docker.vetsez.net/coding-challenge-app
       tag: development-123c6ad78ea7dd1299322a71785bc3d39c9a98ac
       pullPolicy: Always
     initImage:
-      repository: meetveracity/coding-challenge-db-init
+      repository: docker.vetsez.net/coding-challenge-db-init
       tag: development-123c6ad78ea7dd1299322a71785bc3d39c9a98ac
       pullPolicy: Always
     postgresql:

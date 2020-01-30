@@ -87,7 +87,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "meetveracity/jenkins-slave-maven"
+                                    image: "docker.vetsez.net/jenkins-slave-maven"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -98,7 +98,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "meetveracity/jenkins-slave-ruby"
+                                    image: "docker.vetsez.net/jenkins-slave-ruby"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -130,7 +130,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "meetveracity/jenkins-slave-ruby"
+                                    image: "docker.vetsez.net/jenkins-slave-ruby"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -152,7 +152,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "meetveracity/jenkins-slave-helm"
+                                    image: "docker.vetsez.net/jenkins-slave-helm"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -168,7 +168,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "meetveracity/jenkins-slave-docker"
+                                    image: "docker.vetsez.net/jenkins-slave-docker"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
