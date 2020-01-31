@@ -214,5 +214,5 @@ master:
             git: |
                 unclassified:
                   gitscm:
-                    globalConfigName: jasonluck
-                    globalConfigEmail: jluck@meetveracity.com
+                    globalConfigName: jayward
+                    globalConfigEmail: jay@paladinarcher.com
