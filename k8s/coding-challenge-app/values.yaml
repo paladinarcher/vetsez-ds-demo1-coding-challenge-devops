@@ -5,12 +5,12 @@
 replicaCount: 1
 
 image:
-  repository: docker.vetsez.net/coding-challenge-app
+  repository: paladinarcher/coding-challenge-app
   tag: latest
   pullPolicy: IfNotPresent
 
 initImage:
-  repository: docker.vetsez.net/coding-challenge-db-init
+  repository: paladinarcher/coding-challenge-db-init
   tag: latest
   pullPolicy: IfNotPresent
 

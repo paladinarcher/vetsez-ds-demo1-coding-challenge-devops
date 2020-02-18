@@ -87,7 +87,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "docker.vetsez.net/jenkins-slave-maven"
+                                    image: "paladinarcher/jenkins-slave-maven"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -98,7 +98,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "docker.vetsez.net/jenkins-slave-ruby"
+                                    image: "paladinarcher/jenkins-slave-ruby"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -130,7 +130,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "docker.vetsez.net/jenkins-slave-ruby"
+                                    image: "paladinarcher/jenkins-slave-ruby"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -152,7 +152,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "docker.vetsez.net/jenkins-slave-helm"
+                                    image: "paladinarcher/jenkins-slave-helm"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -168,7 +168,7 @@ master:
                                 inheritFrom: "default"
                                 containers:
                                   - name: jnlp
-                                    image: "docker.vetsez.net/jenkins-slave-docker"
+                                    image: "paladinarcher/jenkins-slave-docker"
                                     alwaysPullImage: true
                                     workingDir: ""
                                     command: ""
@@ -176,7 +176,7 @@ master:
                                     envVars:
                                       - envVar:
                                           key: "DOCKER_REGISTRY_URL"
-                                          value: "https://docker.vetsez.net/v2"
+                                          value: ""
                                       - envVar:
                                           key: "DOCKER_CREDENTIAL_ID"
                                           value: "docker-registry"
