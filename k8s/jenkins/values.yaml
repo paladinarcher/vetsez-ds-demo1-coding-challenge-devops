@@ -35,13 +35,13 @@ master:
       - configuration-as-code:1.35
       - command-launcher:1.4
       - kubernetes:1.23.4
-      - workflow-job:2.33
+      - workflow-job:2.36
       - workflow-aggregator:2.6
-      - credentials-binding:1.19
-      - git:3.12.1
-      - github:1.29.4
-      - github-api:1.95
-      - github-branch-source:2.5.3
+      - credentials-binding:1.21
+      - git:4.1.1
+      - github:1.29.5
+      - github-api:1.106
+      - github-branch-source:2.6.0
       - github-oauth:0.33
       - slack:2.36
       - blueocean:1.22.0
