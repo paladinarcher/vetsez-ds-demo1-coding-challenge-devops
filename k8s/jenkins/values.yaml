@@ -35,10 +35,10 @@ master:
       - configuration-as-code:1.35
       - command-launcher:1.4
       - kubernetes:1.23.4
-      - workflow-job:2.32
+      - workflow-job:2.33
       - workflow-aggregator:2.6
       - credentials-binding:1.19
-      - git:3.10.0
+      - git:3.12.1
       - github:1.29.4
       - github-api:1.95
       - github-branch-source:2.5.3
