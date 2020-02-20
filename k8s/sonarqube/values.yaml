@@ -1,6 +1,6 @@
 service:
     type: LoadBalancer
-    externalPort: 9000
+    externalPort: 80
 
 sonarProperties:
     sonar.forceAuthentication: true
