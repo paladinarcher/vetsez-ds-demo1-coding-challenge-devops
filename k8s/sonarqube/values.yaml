@@ -1,5 +1,6 @@
 service:
     type: LoadBalancer
+    externalPort: 9000
 
 sonarProperties:
     sonar.forceAuthentication: true
@@ -17,5 +18,5 @@ persistence:
     accessMode: ReadWriteOnce
     size: 10Gi
 
-service:
-    externalPort: 80
+#service:
+#    externalPort: 80
