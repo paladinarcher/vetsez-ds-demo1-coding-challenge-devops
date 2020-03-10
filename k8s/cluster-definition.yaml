@@ -1,0 +1,51 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: bpa-cluster3
+  region: us-east-1
+
+managedNodeGroups:
+  - name: ng-1-worker
+    labels: { role: worker, name: ng-1-worker-node, node-class: worker }
+    tags:
+      nodegroup-role: worker
+      name: ng-1-worker-node
+    instanceType: t3.medium
+    desiredCapacity: 3
+    volumeSize: 50
+    amiFamily: AmazonLinux2
+    ssh:
+      allow: true
+      publicKeyName: bpa-eks-cluster-key-pair
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+        certManager: true
+    #preBootstrapCommands:
+      # allow docker registries to be deployed as cluster service
+      #- 'echo {\"insecure-registries\": [\"172.20.0.0/16\",\"10.100.0.0/16\"]} > /etc/docker/daemon.json'
+      #- "systemctl restart docker"
+
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      # All workloads in the "default" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: default
+  - name: fp-monitoring
+    selectors:
+      - namespace: amazon-cloudwatch
+      - namespace: monitoring
+      - namespace: kubernetes-dashboard
+  - name: fp-dev
+    selectors:
+      # All workloads in the "dev" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: development
+        labels:
+          env: dev
+          checks: passed
+
+# cluster AZs must be set explicitly for single AZ nodegroup example to work
+availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c"]
